@@ -1,5 +1,9 @@
 # History
 
+## v1.0.2 September 18, 2015
+- Initial working version
+- Added tests
+
 ## v1.0.1 September 18, 2015
 - Fixed typo
 

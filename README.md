@@ -90,10 +90,13 @@ We can utilise this feature of ESNext to our advantage, by publishing both the E
 1. Create an `esnextguardian.js` file in the root of your project, containing the following:
 
  	``` javascript
-	module.exports = require('esnextguardian')(__dirname + '/esnext/lib/index.js', __dirname + '/es5/lib/index.js')
+	module.exports = require('esnextguardian')(
+        require('path').join(__dirname, 'esnext', 'lib', 'index.js'),
+        require('path').join(__dirname, 'es5', 'lib', 'index.js')
+    )
 	```
 
-	Customize the paths to your desired esnext and ES5 main files.
+	Customize the paths to your desired ESNext and ES5 main files.
 
 1. Make the following changes to your `package.json` file:
 
