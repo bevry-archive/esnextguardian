@@ -1,7 +1,7 @@
 {
   "title": "ESNextGuardian",
   "name": "esnextguardian",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Load your ES6+ files if the user's environment supports it, otherwise gracefully fallback to your ES5 files.",
   "homepage": "https://github.com/bevry/esnextguardian",
   "license": "MIT",

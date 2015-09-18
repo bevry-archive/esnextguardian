@@ -19,7 +19,7 @@ module.exports = function (newPath, oldPath) {
 				console.log('Downgrading from ESNEXT to ES5 due to:', e.stack)
 			}
 			// Then just use the ES5 version
-			module.exports = require(odPath)
+			module.exports = require(oldPath)
 		}
 	}
 }
