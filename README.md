@@ -100,21 +100,21 @@ We can utilise this feature of ESNext to our advantage, by publishing both the E
 
 1. Make the following changes to your `package.json` file:
 
-	1. Specify the `main` property to point to your `esnextguardian.js` file, like so:
-
-		``` json
-		{
-			"main": "./esnextguardian.js"
+	``` json
+	{
+		"main": "./esnextguardian.js",
+		"browser": "./es5/lib/index.js",
+		"jspm": {
+			"main": "./esnext/lib/index.js"
 		}
-		```
-
-	2. Optional: If you want to force browser compilers to online include the ES5 copy of your code, specify the `browser` property to point to your ES5 file, like so:
-
-		``` json
-		{
-			"browser": "./es5/lib/index.js"
-		}
-		```
+	}
+	```
+	
+	This will:
+	
+	- By default for cross-enviroment compatibility the ESNextGuardian script will be used.
+	- For [browserify](http://browserify.org/) (a CommonJS compiler that uses the [`browser` field](https://github.com/substack/node-browserify#browser-field)) the ES5 script will be used. 
+	- For [jspm](http://jspm.io) (an ES6 package manager that uses the [`jspm.main` field](https://github.com/jspm/registry/wiki/Configuring-Packages-for-jspm#prefixing-configuration)) the ESNext script will be used.
 
 1. All done, you may now test and publish your package.
 
