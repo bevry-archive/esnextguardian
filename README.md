@@ -7,6 +7,7 @@
 
 <!-- BADGES/ -->
 
+<span class="badge-travisci"><a href="http://travis-ci.org/bevry/esnextguardian" title="Check this project's build status on TravisCI"><img src="https://img.shields.io/travis/bevry/esnextguardian/master.svg" alt="Travis CI Build Status" /></a></span>
 <span class="badge-npmversion"><a href="https://npmjs.org/package/esnextguardian" title="View this project on NPM"><img src="https://img.shields.io/npm/v/esnextguardian.svg" alt="NPM version" /></a></span>
 <span class="badge-npmdownloads"><a href="https://npmjs.org/package/esnextguardian" title="View this project on NPM"><img src="https://img.shields.io/npm/dm/esnextguardian.svg" alt="NPM downloads" /></a></span>
 <span class="badge-daviddm"><a href="https://david-dm.org/bevry/esnextguardian" title="View the status of this project's dependencies on DavidDM"><img src="https://img.shields.io/david/bevry/esnextguardian.svg" alt="Dependency Status" /></a></span>
@@ -90,10 +91,7 @@ We can utilise this feature of ESNext to our advantage, by publishing both the E
 1. Create an `esnextguardian.js` file in the root of your project, containing the following:
 
  	``` javascript
-	module.exports = require('esnextguardian')(
-        require('path').join(__dirname, 'esnext', 'lib', 'index.js'),
-        require('path').join(__dirname, 'es5', 'lib', 'index.js')
-    )
+	module.exports = require('esnextguardian')('./esnext/lib/index.js', './es5/lib/index.js', require)
 	```
 
 	Customize the paths to your desired ESNext and ES5 main files.
@@ -109,11 +107,11 @@ We can utilise this feature of ESNext to our advantage, by publishing both the E
 		}
 	}
 	```
-	
+
 	This will:
-	
+
 	- By default for cross-enviroment compatibility the ESNextGuardian script will be used.
-	- For [browserify](http://browserify.org/) (a CommonJS compiler that uses the [`browser` field](https://github.com/substack/node-browserify#browser-field)) the ES5 script will be used. 
+	- For [browserify](http://browserify.org/) (a CommonJS compiler that uses the [`browser` field](https://github.com/substack/node-browserify#browser-field)) the ES5 script will be used.
 	- For [jspm](http://jspm.io) (an ES6 package manager that uses the [`jspm.main` field](https://github.com/jspm/registry/wiki/Configuring-Packages-for-jspm#prefixing-configuration)) the ESNext script will be used.
 
 1. All done, you may now test and publish your package.
@@ -152,7 +150,7 @@ We can utilise this feature of ESNext to our advantage, by publishing both the E
 
 These amazing people are maintaining this project:
 
-<ul><li><a href="https://github.com/balupton">Benjamin Lupton</a> — <a href="https://github.com/bevry/esnextguardian/commits?author=balupton" title="View the GitHub contributions of Benjamin Lupton on repository bevry/esnextguardian">view contributions</a></li></ul>
+<ul><li><a href="http://balupton.com">Benjamin Lupton</a> — <a href="https://github.com/bevry/esnextguardian/commits?author=balupton" title="View the GitHub contributions of Benjamin Lupton on repository bevry/esnextguardian">view contributions</a></li></ul>
 
 <h3>Sponsors</h3>
 
@@ -169,7 +167,7 @@ No sponsors yet! Will you be the first?
 
 These amazing people have contributed code to this project:
 
-<ul><li><a href="https://github.com/balupton">Benjamin Lupton</a> — <a href="https://github.com/bevry/esnextguardian/commits?author=balupton" title="View the GitHub contributions of Benjamin Lupton on repository bevry/esnextguardian">view contributions</a></li></ul>
+<ul><li><a href="http://balupton.com">Benjamin Lupton</a> — <a href="https://github.com/bevry/esnextguardian/commits?author=balupton" title="View the GitHub contributions of Benjamin Lupton on repository bevry/esnextguardian">view contributions</a></li></ul>
 
 <a href="https://github.com/bevry/esnextguardian/blob/master/CONTRIBUTING.md#files">Discover how you can contribute by heading on over to the <code>CONTRIBUTING.md</code> file.</a>
 

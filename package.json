@@ -1,7 +1,7 @@
 {
   "title": "ESNextGuardian",
   "name": "esnextguardian",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Load your ES6+ files if the user's environment supports it, otherwise gracefully fallback to your ES5 files.",
   "homepage": "https://github.com/bevry/esnextguardian",
   "license": "MIT",
@@ -18,6 +18,7 @@
   ],
   "badges": {
     "list": [
+      "travisci",
       "npmversion",
       "npmdownloads",
       "daviddm",
@@ -43,10 +44,10 @@
   },
   "author": "2015+ Bevry Pty Ltd <us@bevry.me> (http://bevry.me)",
   "maintainers": [
-    "Benjamin Lupton <b@lupton.cc> (https://github.com/balupton)"
+    "Benjamin Lupton <b@lupton.cc> (http://balupton.com)"
   ],
   "contributors": [
-    "Benjamin Lupton <b@lupton.cc> (https://github.com/balupton)"
+    "Benjamin Lupton <b@lupton.cc> (http://balupton.com)"
   ],
   "bugs": {
     "url": "https://github.com/bevry/esnextguardian/issues"

@@ -34,7 +34,7 @@ joe.suite('esnextguardian', function (suite, test) {
 
 	}
 
-	else if ( nodeVersion === '4.0' ) {
+	else if ( nodeVersion === '4.0' || nodeVersion === '4.1' ) {
 
 		test('es6 inclusion', function () {
 			const C = esnextguardian(es6Path, es5Path)
