@@ -77,7 +77,7 @@ We can utilise this feature of ESNext to our advantage, by publishing both the E
 		``` json
 		{
 			"scripts": {
-				"compile": "./node_modules/.bin/babel esnext --out-dir es5"
+				"compile": "babel esnext --out-dir es5"
 			}
 		}
 		```
