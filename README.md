@@ -60,13 +60,20 @@ We can utilise this feature of ESNext to our advantage, by publishing both the E
 
 1. If you haven't already got setup with ES6+, you can do so by:
 
-	1. Installing [Babel](https://babeljs.io) as a development dependency:
+	1. Install [Babel](https://babeljs.io) as a development dependency:
 
 		``` shell
-		npm install --save-dev babel
+		npm install --save-dev babel-cli
 		```
 
-	1. Use this command to compile your ES6+ files (inside an `esnext` directory) to ES5 files (inside a `es5` directory):
+    1. [Configure](http://babeljs.io/docs/plugins/preset-es2015/) Babel to compile ESNext to ES5:
+
+        ``` shell
+        npm install --save-dev babel-preset-es2015
+        wget -N https://raw.githubusercontent.com/bevry/base/master/.babelrc
+        ```
+
+	1. Use this command to compile your ESNext files (inside an `esnext` directory) to ES5 files (inside a `es5` directory):
 
 		``` shell
 		./node_modules/.bin/babel esnext --out-dir es5
@@ -82,19 +89,28 @@ We can utilise this feature of ESNext to our advantage, by publishing both the E
 		}
 		```
 
-1. Install and add esnextguardian to your project's dependencies:
+1. Install and add ESNextGuardian to your project's dependencies:
 
 	``` shell
 	npm install --save esnextguardian
 	```
 
-1. Create an `esnextguardian.js` file in the root of your project, containing the following:
+1. Create an `esnextguardian.js` file in the root of your project, containing the following, customising the paths to your desired ESNext and ES5 main files.
 
  	``` javascript
-	module.exports = require('esnextguardian')('./esnext/lib/index.js', './es5/lib/index.js', require)
+    // 2015 December 8
+    // https://github.com/bevry/esnextguardian
+    var pathUtil = require('path')
+    module.exports = require('esnextguardian')(
+    	pathUtil.join(__dirname, 'esnext', 'lib', 'index.js'),
+    	pathUtil.join(__dirname, 'es5', 'lib', 'index.js'),
+        require
+    )
 	```
 
-	Customize the paths to your desired ESNext and ES5 main files.
+	We pass `require` as the 3rd argument to ensure that the require setup/configuration/environment remains the same as the module calling ESNextGuardian, it can differ between modules.
+
+    We use `require('path').join` with `__dirname` to ensure that debugging messages and stack traces are indicative of the module calling ESNextGuardian, as the relative paths alone do not provide enough to be useful for those use cases.
 
 1. Make the following changes to your `package.json` file:
 
@@ -103,25 +119,45 @@ We can utilise this feature of ESNext to our advantage, by publishing both the E
 		"main": "./esnextguardian.js",
 		"browser": "./es5/lib/index.js",
 		"jspm": {
-			"main": "./esnext/lib/index.js"
+			"main": "./es5/lib/index.js"
 		}
 	}
 	```
 
-	This will:
+	This will use:
 
-	- By default for cross-enviroment compatibility the ESNextGuardian script will be used.
-	- For [browserify](http://browserify.org/) (a CommonJS compiler that uses the [`browser` field](https://github.com/substack/node-browserify#browser-field)) the ES5 script will be used.
-	- For [jspm](http://jspm.io) (an ES6 package manager that uses the [`jspm.main` field](https://github.com/jspm/registry/wiki/Configuring-Packages-for-jspm#prefixing-configuration)) the ESNext script will be used.
+	- The ESNextGuardian script by default for cross-enviroment compatibility
+    - The ES5 Script for:
+        - [browserify](http://browserify.org/) (a CommonJS compiler that uses the [`browser` field](https://github.com/substack/node-browserify#browser-field))
+        - [jspm](http://jspm.io) (an ES6 package manager that uses the [`jspm.main` field](https://github.com/jspm/registry/wiki/Configuring-Packages-for-jspm#prefixing-configuration))
+            - jspm uses the ES5 Script as ESNext support in jspm has not been released yet, [details here](https://github.com/bevry/domain-browser/pull/7#issuecomment-160814333)
 
 1. All done, you may now test and publish your package.
 
-1. Optional: If you don't want your git repository polluted with your ES5 compiled files, add your ES5 files to your `.gitignore` file, like so:
+Notes:
+
+- Node.js [does not support](https://twitter.com/balupton/status/671519915795345410) [ECMAScript Modules](https://babeljs.io/docs/learn-es2015/#modules) so if you want ESNextGuardian to be of any value, be sure to use [Node.js (CommonJS) Modules](https://nodejs.org/api/modules.html) exclusively in your modules.
+
+    If you use [ESLint](http://eslint.org) you can set `ecmaFeatures.modules` to `false` in your [ESLint configuration](http://eslint.org/docs/user-guide/configuring) to help enforce this.
+
+- If you don't want your git repository polluted with your ES5 compiled files, add your ES5 files to your `.gitignore` file, like so:
 
 	```
 	# Build Files
 	es5/
 	```
+
+- The following environment boolean flags are available:
+
+    - `DEBUG_ESNEXTGUARDIAN` when `true` will output relevant debug information regarding (it is recommended you enable this for your development environments):
+
+        - If the ESNext script fails to load, the error message as to why will be outputted
+        - If relative paths were provided to ESNextGuardian a non-fatal warning will be outputted
+        - If the `require` argument was not provided to ESNextGuardian, a non-fatal warning will be outputted
+
+    - `REQUIRE_ESNEXT` when `true` will only attempt to load the ESNext script
+
+    - `REQUIRE_ES5` when `true` will only attempt to load the ES5 script
 
 
 <!-- HISTORY/ -->

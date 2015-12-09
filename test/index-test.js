@@ -1,3 +1,6 @@
+/* esnext no-magic-numbers:0 */
+'use strict'
+
 // Import
 const joe = require('joe')
 const esnextguardian = require('../')
@@ -34,7 +37,7 @@ joe.suite('esnextguardian', function (suite, test) {
 
 	}
 
-	else if ( nodeVersion === '4.0' || nodeVersion === '4.1' ) {
+	else if ( nodeVersion === '4.0' || nodeVersion === '4.1' || nodeVersion === '5.1' ) {
 
 		test('es6 inclusion', function () {
 			const C = esnextguardian(es6Path, es5Path)
@@ -47,7 +50,7 @@ joe.suite('esnextguardian', function (suite, test) {
 			const C = esnextguardian(es7Path, es5Path)
 			const c = new C()
 			asserHelpers.deepEqual(c.reverse([1, 2, 3]), [3, 2, 1], 'reverse result was as expected')
-			asserHelpers.equal(c.version(), 'es5', 'version result was as expected — es7 test should fallback to es5 as es7 is not yet supported on node v4.0')
+			asserHelpers.equal(c.version(), 'es5', 'version result was as expected — es7 test should fallback to es5 as es7 is not yet supported on ' + nodeVersion)
 		})
 
 	}
