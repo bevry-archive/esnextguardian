@@ -1,7 +1,7 @@
 {
   "title": "ESNextGuardian",
   "name": "esnextguardian",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Load your ES6+ files if the user's environment supports it, otherwise gracefully fallback to your ES5 files.",
   "homepage": "https://github.com/bevry/esnextguardian",
   "license": "MIT",
@@ -35,8 +35,8 @@
     "config": {
       "patreonUsername": "bevry",
       "gratipayUsername": "bevry",
-      "flattrCode": "344188/balupton-on-Flattr",
-      "paypalButtonID": "QB8GQPZAH84N6",
+      "flattrUsername": "balupton",
+      "paypalURL": "https://bevry.me/paypal",
       "bitcoinURL": "https://bevry.me/bitcoin",
       "wishlistURL": "https://bevry.me/wishlist",
       "slackinURL": "https://slack.bevry.me"
@@ -66,7 +66,8 @@
     "eslint": "^1.10.2",
     "joe": "^1.6.0",
     "joe-reporter-console": "^1.2.1",
-    "projectz": "^1.0.7"
+    "projectz": "^1.0.7",
+    "semver": "^5.1.0"
   },
   "main": "./lib/index.js",
   "scripts": {

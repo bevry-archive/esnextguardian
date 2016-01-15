@@ -1,4 +1,4 @@
-/* esnext no-magic-numbers:0 */
+/* eslint no-magic-numbers:0 */
 'use strict'
 
 // Import
@@ -6,12 +6,13 @@ const joe = require('joe')
 const esnextguardian = require('../')
 const asserHelpers = require('assert-helpers')
 const pathUtil = require('path')
+const semver = require('semver')
 
 // Prepare
 const es5Path = pathUtil.join(__dirname, 'es5.js')
 const es6Path = pathUtil.join(__dirname, 'es6.js')
 const es7Path = pathUtil.join(__dirname, 'es7.js')
-const nodeVersion = process.versions.node.split('.').slice(0, 2).join('.')
+const nodeVersion = process.versions.node.split('.').join('.')
 
 // =====================================
 // Tests
@@ -26,7 +27,7 @@ joe.suite('esnextguardian', function (suite, test) {
 		asserHelpers.equal(c.version(), 'es5', 'version result was as expected')
 	})
 
-	if ( nodeVersion === '0.10' || nodeVersion === '0.12' ) {
+	if ( semver.satisfies(nodeVersion, '0.10 || 0.12') ) {
 
 		test('es6 fallback', function () {
 			const C = esnextguardian(es6Path, es5Path)
@@ -37,7 +38,7 @@ joe.suite('esnextguardian', function (suite, test) {
 
 	}
 
-	else if ( nodeVersion === '4.0' || nodeVersion === '4.1' || nodeVersion === '5.1' ) {
+	else if ( semver.satisfies(nodeVersion, '4 || 5') ) {
 
 		test('es6 inclusion', function () {
 			const C = esnextguardian(es6Path, es5Path)

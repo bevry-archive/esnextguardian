@@ -1,4 +1,6 @@
+/* eslint no-var:0 */
 'use strict'
+
 function MyClass () { }
 MyClass.prototype.reverse = function reverse (a) {
 	var z = []

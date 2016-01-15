@@ -1,4 +1,5 @@
 'use strict'
+
 module.exports = class MyClass {
 	reverse (arr) {
 		const [a, b, c] = arr

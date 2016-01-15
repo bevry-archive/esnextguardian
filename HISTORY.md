@@ -1,5 +1,8 @@
 # History
 
+## v1.2.1 2016 January 15
+- Repackaged
+
 ## v1.2.0 2015 December 9
 - Debug environment variable is now `DEBUG_ESNEXTGUARDIAN` instead of `DEBUG`, is now documented, and is now used to warn when preferred practices are not followed
 
