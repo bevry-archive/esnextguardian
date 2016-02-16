@@ -134,30 +134,38 @@ We can utilise this feature of ESNext to our advantage, by publishing both the E
 
 1. All done, you may now test and publish your package.
 
-Notes:
 
-- Node.js [does not support](https://twitter.com/balupton/status/671519915795345410) [ECMAScript Modules](https://babeljs.io/docs/learn-es2015/#modules) so if you want ESNextGuardian to be of any value, be sure to use [Node.js (CommonJS) Modules](https://nodejs.org/api/modules.html) exclusively in your modules.
+### Notes
 
-    If you use [ESLint](http://eslint.org) you can set `ecmaFeatures.modules` to `false` in your [ESLint configuration](http://eslint.org/docs/user-guide/configuring) to help enforce this.
+#### Modules
 
-- If you don't want your git repository polluted with your ES5 compiled files, add your ES5 files to your `.gitignore` file, like so:
+Node.js [does not support](https://twitter.com/balupton/status/671519915795345410) [ECMAScript Modules](https://babeljs.io/docs/learn-es2015/#modules) so if you want ESNextGuardian to be of any value, be sure to use [Node.js (CommonJS) Modules](https://nodejs.org/api/modules.html) exclusively in your modules.
 
-	```
-	# Build Files
-	es5/
-	```
+If you use [ESLint](http://eslint.org) you can set `ecmaFeatures.modules` to `false` in your [ESLint configuration](http://eslint.org/docs/user-guide/configuring) to help enforce this.
 
-- The following environment boolean flags are available:
+#### Gitignore
 
-    - `DEBUG_ESNEXTGUARDIAN` when `true` will output relevant debug information regarding (it is recommended you enable this for your development environments):
+If you don't want your git repository polluted with your ES5 compiled files, add your ES5 files to your `.gitignore` file, like so:
 
-        - If the ESNext script fails to load, the error message as to why will be outputted
-        - If relative paths were provided to ESNextGuardian a non-fatal warning will be outputted
-        - If the `require` argument was not provided to ESNextGuardian, a non-fatal warning will be outputted
+```
+# Build Files
+es5/
+```
 
-    - `REQUIRE_ESNEXT` when `true` will only attempt to load the ESNext script
+#### Flags
 
-    - `REQUIRE_ES5` when `true` will only attempt to load the ES5 script
+The following environment boolean flags are available:
+
+- `DEBUG_ESNEXTGUARDIAN` when `true` will output relevant debug information regarding (it is recommended you enable this for your development environments):
+
+- If the ESNext script fails to load, the error message as to why will be outputted
+- If relative paths were provided to ESNextGuardian a non-fatal warning will be outputted
+- If the `require` argument was not provided to ESNextGuardian, a non-fatal warning will be outputted
+
+- `REQUIRE_ESNEXT` when `true` will only attempt to load the ESNext script
+
+- `REQUIRE_ES5` when `true` will only attempt to load the ES5 script
+
 
 
 <!-- HISTORY/ -->
