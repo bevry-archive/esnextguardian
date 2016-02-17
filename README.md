@@ -118,6 +118,7 @@ We can utilise this feature of ESNext to our advantage, by publishing both the E
 	{
 		"main": "./esnextguardian.js",
 		"browser": "./es5/lib/index.js",
+		"jsnext:main": "./esnext/lib/index.js",
 		"jspm": {
 			"main": "./es5/lib/index.js"
 		}
@@ -129,7 +130,8 @@ We can utilise this feature of ESNext to our advantage, by publishing both the E
 	- The ESNextGuardian script by default for cross-enviroment compatibility
     - The ES5 Script for:
         - [browserify](http://browserify.org/) (a CommonJS compiler that uses the [`browser` field](https://github.com/substack/node-browserify#browser-field))
-        - [jspm](http://jspm.io) (an ES6 package manager that uses the [`jspm.main` field](https://github.com/jspm/registry/wiki/Configuring-Packages-for-jspm#prefixing-configuration))
+        - [rollup](http://rollupjs.org) (a CommonJS and ESNext compiler that uses the [`jsnext:main` field](https://github.com/rollup/rollup/wiki/jsnext:main))
+        - [jspm](http://jspm.io) (an ESNext package manager that uses the [`jspm.main` field](https://github.com/jspm/registry/wiki/Configuring-Packages-for-jspm#prefixing-configuration))
             - jspm uses the ES5 Script as ESNext support in jspm has not been released yet, [details here](https://github.com/bevry/domain-browser/pull/7#issuecomment-160814333)
 
 1. All done, you may now test and publish your package.
