@@ -30,6 +30,7 @@ Load your ES6+ files if the user's environment supports it, otherwise gracefully
 
 <!-- /DESCRIPTION -->
 
+**UPDATE:** [Editions](https://github.com/bevry/editions) is the spiritual successor of ESNextGuardian - while they are not the same, they mostly address the same use case.
 
 ## Why?
 
